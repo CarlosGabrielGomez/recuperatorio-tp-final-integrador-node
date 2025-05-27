@@ -34,18 +34,15 @@ app.post("/create", async (req, res) => {
 app.put("/update/:id", async (req, res) => {
   const { nombre, email } = req.body;
   const id = req.params.id;
-  console.log(req.body);
   const val = await actualizarUsuario(id, nombre, email);
-  console.log(val);
-  res.status(200).json({ cambios: val });
+  res.status(200).json({ FilasModificadas: val });
 });
 
 //eliminar
 app.delete("/delete/:id", async (req, res) => {
   const id = req.params.id;
   const val = await eliminarUsuario(id);
-  console.log(val);
-  res.status(200).json(val);
+  res.status(200).json({ FilasEliminadas: val });
 });
 
 // Inicia el servidor
